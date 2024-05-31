@@ -105,3 +105,60 @@ abstract contract Ownable is Context {
     }
 }
 
+
+contract RegisterCourse is Ownable {
+    uint256 public courseFee;
+    Payment[] public payments;
+
+    error PaymentIncorrect(uint256 expected, uint256 actual);
+
+    event PaymentReceived(address indexed user, string email, uint256 amount);
+
+    struct Payment {
+        address user;
+        string email;
+        uint256 amount;
+    }
+
+    constructor(uint256 _courseFee) Ownable(_msgSender()) {
+        courseFee = _courseFee;
+    }
+
+    function payForCourse(string memory email) public payable {
+        if(msg.value != courseFee){
+         revert PaymentIncorrect(courseFee, _msgValue());
+        }
+        payments.push(Payment(_msgSender(), email, _msgValue()));
+        emit PaymentReceived(_msgSender(), email, _msgValue());
+    }
+
+    function withdrawFunds() public onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+
+    function getPaymentsByUser(address userAddress) public view returns (Payment[] memory) {
+        uint256 count = 0;
+
+        for (uint i = 0; i < payments.length; i++) {
+            if (payments[i].user == userAddress) {
+                count++;
+            }
+        }
+
+        Payment[] memory userPayments = new Payment[](count);
+
+        uint256 index = 0;
+        for (uint i = 0; i < payments.length; i++) {
+            if (payments[i].user == userAddress) {
+                userPayments[index] = payments[i];
+                index++;
+            }
+        }
+
+        return userPayments;
+    }
+
+    function getAllPayments() public view returns (Payment[] memory) {
+        return payments;
+    }
+}
