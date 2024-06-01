@@ -6,6 +6,8 @@
 
     - A Front End React project where user can go Connect a Wallet like metamask, trustwallet etc... and make a payment
 
-    - After Succesful payment from user using wallet , the user will given access to the course or particular files.
+    - After Succesful payment from user using wallet,
+     the user will given access to the course or particular files.
 
-    - A backend written in node that will watch the contract and for successful transaction on Ethererum mainnet . it will provide the user access to course.
+    - A backend written in node that will watch the contract and for successful transaction on Ethererum mainnet.
+     it will provide the user access to course.
