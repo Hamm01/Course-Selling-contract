@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import type { Contract } from 'web3-eth-contract';
-
+import { contractABI } from "./abi.ts";
 
 
 function App() {
