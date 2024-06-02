@@ -1,8 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Web3 from 'web3';
 import './admin.css'
 
-export default function AdminPage({ web3, courseContract }: any) {
-    const [payments, setPayments] = useState([])
+interface PaymentType {
+    email: string,
+    user: string,
+    amount: number
+}
+interface ParametersType {
+    web3: Web3 | null,
+    courseContract: any
+}
+
+export default function AdminPage({ web3, courseContract }: ParametersType) {
+    const [payments, setPayments] = useState<PaymentType[]>([])
 
     const fetchPayments = async () => {
         if (!web3 || !courseContract) return;
@@ -19,7 +30,7 @@ export default function AdminPage({ web3, courseContract }: any) {
         }
 
     }
-    useState(() => {
+    useEffect(() => {
         fetchPayments()
 
     }, [web3, courseContract])
