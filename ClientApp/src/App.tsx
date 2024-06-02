@@ -31,6 +31,19 @@ function App() {
 
   }, [])
 
+  async function fetchingCoursefee() {
+    if (web3) {
+      try {
+        const courseContractInstance = new web3.eth.Contract(contractABI, contractAddress)
+        setCourseContract(courseContractInstance)
+        const _CourseFee: number = await courseContractInstance.methods.courseFee().call()
+        setCourseFee(web3.utils.fromWei(_CourseFee, 'ether'))
+      } catch (error) {
+        console.error('Error in fetching course fee:', error);
+      }
+    }
+  }
+
 
 
   return (
@@ -42,7 +55,7 @@ function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<RegisterCourse web3={web3} courseContract={courseContract} courseFee={courseFee} />} />
+        <Route path="/" element={<RegisterCourse web3={web3} courseContract={courseContract} courseFee={courseFee} fetchingCoursefee={fetchingCoursefee} />} />
         <Route path="/admin" element={<AdminPage web3={web3} courseContract={courseContract} />} />
 
       </Routes>
