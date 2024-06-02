@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import type { Contract } from 'web3-eth-contract';
 import { contractABI } from "./abi.ts";
-
+import RegisterCourse from './RegisterCourse.tsx';
+import AdminPage from './AdminPage.tsx';
 
 function App() {
   const [web3, setWeb3] = useState<Web3 | null>(null)
