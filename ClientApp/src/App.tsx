@@ -2,14 +2,15 @@ import './App.css'
 import Web3 from 'web3';
 import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
-import type { Contract } from 'web3-eth-contract';
 import { contractABI } from "./abi.ts";
+import { AbiItem } from 'web3-utils';
 import RegisterCourse from './RegisterCourse.tsx';
 import AdminPage from './AdminPage.tsx';
 
 function App() {
   const [web3, setWeb3] = useState<Web3 | null>(null)
-  const [courseContract, setCourseContract] = useState<Contract | null>(null)
+
+  const [courseContract, setCourseContract] = useState<any | null>(null)
   const [courseFee, setCourseFee] = useState('')
   const contractAddress = '0xb5ed31d8a78b71d7ed85d02e253b0d9d79a9c678'
 
@@ -35,7 +36,7 @@ function App() {
   async function fetchingCoursefee() {
     if (web3) {
       try {
-        const courseContractInstance = new web3.eth.Contract(contractABI, contractAddress)
+        const courseContractInstance = new web3.eth.Contract(contractABI as AbiItem[], contractAddress)
         setCourseContract(courseContractInstance)
         const _CourseFee: number = await courseContractInstance.methods.courseFee().call()
         setCourseFee(web3.utils.fromWei(_CourseFee, 'ether'))
