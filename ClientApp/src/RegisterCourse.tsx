@@ -29,11 +29,11 @@ function RegisterCourse({ web3, courseContract, courseFee, fetchingCoursefee }) 
             <img src="https://www.preparationinfo.org/wp-content/uploads/2017/03/digital-marketing.jpg" alt="" width="300px" height="250px" />
             <br />
             <br />
-            <p>Fetching the Current price using blockchain</p>
-            <button onClick={fetchingCoursefee}>FetchCourseFee</button>
+            <p>Fetching the Current price of course using Contract on blockchain</p>
+            <button className="button-fetch" onClick={fetchingCoursefee}>FetchCourseFee</button>
             <p>Course Fee: {courseFee} ETH</p>
-            <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-            <button onClick={payForCourse}>Pay for Course</button>
+            <input className={"inputEdited"} type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+            <button className={"button-snap"} onClick={payForCourse}>Pay for Course</button>
         </div>
     )
 
