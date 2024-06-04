@@ -30,6 +30,17 @@ function RegisterCourse({ web3, courseContract, courseFee, fetchingCoursefee }) 
             <br />
             <br />
             <p>Fetching the Current price of course using Contract on blockchain</p>
+            <div className="item-container">
+                <div className="item-hints">
+                    <div className="hint" data-position="4">
+                        <span className="hint-radius"></span>
+                        <span className="hint-dot"></span>
+                        <div className="hint-content do--split-children">
+                            <p>To use this app and fetchCoursefee you need to install Metamask extn. and select an account with Sepolia Test network on ethereum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button className="button-fetch" onClick={fetchingCoursefee}>FetchCourseFee</button>
             <p>Course Fee: {courseFee} ETH</p>
             <input className={"inputEdited"} type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
