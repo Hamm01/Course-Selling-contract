@@ -50,12 +50,14 @@ function App() {
 
   return (
     <>
-      <nav>
-        <ul>
-          <li><Link to="/">CourseRegistration Homepage</Link></li>
-          <li><Link to="/admin">Admin page</Link></li>
-        </ul>
-      </nav>
+      <header>
+        <nav>
+          <ul>
+            <li><Link to="/">CourseRegistration Homepage</Link></li>
+            <li><Link to="/admin">Admin page</Link></li>
+          </ul>
+        </nav>
+      </header>
       <Routes>
         <Route path="/" element={<RegisterCourse web3={web3} courseContract={courseContract} courseFee={courseFee} fetchingCoursefee={fetchingCoursefee} />} />
         <Route path="/admin" element={<AdminPage web3={web3} courseContract={courseContract} />} />

@@ -21,30 +21,46 @@ function RegisterCourse({ web3, courseContract, courseFee, fetchingCoursefee }) 
 
     }
     return (
-        <div>
-            <p style={{ color: 'red', textAlign: 'center', fontSize: '1.2rem' }}>Hello</p>
-            <p style={{ textAlign: 'center', fontSize: '1.5rem' }}>Buying from the Himanish Course Section</p>
-
-            <h1>Digital Marketing Course Registration</h1>
-            <img src="https://www.preparationinfo.org/wp-content/uploads/2017/03/digital-marketing.jpg" alt="" width="300px" height="250px" />
-            <br />
-            <br />
-            <p>Fetching the Current price of course using Contract on blockchain</p>
-            <div className="item-container">
+        <div className="content">
+            <div className="title-desc">
+                <h3 className="title">Hello</h3>
+                <h3 className="desc1">Buying from the Himanish Course Section</h3>
+            </div>
+            <div className="courseImage">
+                <img
+                    src="https://www.preparationinfo.org/wp-content/uploads/2017/03/digital-marketing.jpg"
+                    alt="Courseimage"
+                />
+                <h2 className="desc2">Digital Marketing Course</h2>
+            </div>
+            <div className="container">
                 <div className="item-hints">
                     <div className="hint" data-position="4">
                         <span className="hint-radius"></span>
                         <span className="hint-dot"></span>
                         <div className="hint-content do--split-children">
-                            <p>To use this app and fetchCoursefee you need to install Metamask extn. and select an account with Sepolia Test network on ethereum.</p>
+                            <p>
+                                To use this app and fetchCoursefee you need to install
+                                Metamask extn. and select an account with Sepolia Test network
+                                on ethereum.
+                            </p>
                         </div>
                     </div>
                 </div>
+                <div className="form-box">
+                    <button className="button-fetch" onClick={fetchingCoursefee}>
+                        FetchCourseFee
+                    </button>
+                    <p>Course Fee: {courseFee} ETH</p>
+                    <input
+                        className="inputEdited"
+                        type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}
+                    />
+                    <button className="button-snap" onClick={payForCourse}>
+                        Pay for Course
+                    </button>
+                </div>
             </div>
-            <button className="button-fetch" onClick={fetchingCoursefee}>FetchCourseFee</button>
-            <p>Course Fee: {courseFee} ETH</p>
-            <input className={"inputEdited"} type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-            <button className={"button-snap"} onClick={payForCourse}>Pay for Course</button>
         </div>
     )
 
