@@ -8,10 +8,7 @@ function RegisterCourse({ web3, courseContract, courseFee, fetchingCoursefee }) 
         try {
             const accounts = await web3.eth.getAccounts()
             const amountInWei = web3.utils.toWei(courseFee, 'ether')
-            console.log("courseFee ", courseFee)
-            console.log("amountInWei ", amountInWei)
             const receipt = await courseContract.methods.payForCourse(email).send({ from: accounts[0], value: amountInWei })
-            console.log('Transaction successful:', receipt);
             alert('Payment successful!');
         }
         catch (error) {

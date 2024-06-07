@@ -22,7 +22,6 @@ export default function AdminPage({ web3, courseContract }: ParametersType) {
         try {
             const paymentDetails = await courseContract.methods.getAllPayments().call()
             paymentDetails.map(payment => payment.amount = web3.utils.fromWei(payment.amount, 'ether'))
-            console.log(paymentDetails);
             setPayments(paymentDetails)
         } catch (error) {
             console.error("Error in fetching the payment details of user", error)
