@@ -28,7 +28,7 @@ function RegisterCourse({ web3, courseContract, courseFee, fetchingCoursefee }) 
             </div>
             <div className="courseImage">
                 <img
-                    src="https://www.preparationinfo.org/wp-content/uploads/2017/03/digital-marketing.jpg"
+                    src="/digtalArt.jpeg"
                     alt="Courseimage"
                 />
                 <h2 className="desc2">Digital Marketing Course</h2>
